@@ -60,7 +60,20 @@ function playGame(){
             console.log("ERROR: Could not play game properly.")
         }
     }
-    console.log(`Player: ${playerScore} | Computer: ${comScore}`)
+    scoreChecker(playerScore, comScore);
+}
+
+function scoreChecker(p, c){
+    console.log(`Player: ${p} | Computer: ${c}`);
+    if (p == c){
+        console.log("The game is draw.")
+    }
+    else if (p > c){
+        console.log("Player won the game!")
+    }
+    else{
+        console.log("Computer won the game!")
+    }
 }
 
 playGame();
