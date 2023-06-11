@@ -1,3 +1,5 @@
+const playerSelection = document.querySelectorAll('button');
+
 function getComputerChoice(){
     let choices = ["Rock", "Paper", "Scissor"];
     let pick = choices[Math.floor(Math.random()*choices.length)];
@@ -13,30 +15,30 @@ function playRound(playerSelection, computerSelection){
     }
     else if (player == "rock"){
         if (computer == "paper"){
-            return "com";
+            return "lose";
         } 
         else if (computer == "scissor"){
-            return "player"
+            return "win"
         }
     }
     else if (player == "paper"){
         if (computer == "scissor"){
-            return "com";
+            return "lose";
         } 
         else if (computer == "rock"){
-            return "player"
+            return "win"
         }
     }
     else if (player == "scissor"){
         if (computer == "rock"){
-            return "com";
+            return "lose";
         } 
         else if (computer == "paper"){
-            return "player"
+            return "win"
         }
     }
 }
-
+/** 
 function playGame(){
     let playerScore = 0;
     let comScore = 0;
@@ -62,9 +64,10 @@ function playGame(){
     }
     scoreChecker(playerScore, comScore);
 }
+**/
 
 function scoreChecker(p, c){
-    console.log(`Player: ${p} | Computer: ${c}`);
+    //console.log(`Player: ${p} | Computer: ${c}`);
     if (p == c){
         console.log("The game is draw.")
     }
@@ -76,4 +79,14 @@ function scoreChecker(p, c){
     }
 }
 
-playGame();
+//playGame();
+
+playerSelection.forEach((pick) => {
+    pick.addEventListener('click', () => {
+        console.log(pick.id);
+        //console.log(pick.value)
+        let game = playRound(pick.id, getComputerChoice());
+        console.log(game)
+    });
+    
+});
