@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
     <title>Rock Paper Scissor</title>
 </head>
 <body>
-    <h1>Rock Paper Scissor</h1>
-    <h3>First to score of 5 shall be the winner</h3>
+    <div class="title">Rock Paper Scissor</div>
+    <div class="subtitle">First to score of 5 shall be the winner</div>
     <div class="interface">
+        <h1>SCOREBOARD</h1>
         <div class="scoreboard">
-            SCOREBOARD
             <div>Player: <span class="player-score"></span></div>
             <div>Computer: <span class="com-score"></span></div>
         </div>
+        <h1>PICKS</h1>
         <div class="picks">
-            PICKS
             <div>Player: <span class="player-choice"></span></div>
             <div>Computer: <span class="com-choice"></span></div>
         </div>
-
-        <button id="rock" class="btn">ROCK</button>
-        <button id="paper" class="btn">PAPER</button>
-        <button id="scissor" class="btn">SCISSOR</button>
+        <div class="selections">
+            <button id="rock" class="btn">ROCK</button>
+            <button id="paper" class="btn">PAPER</button>
+            <button id="scissor" class="btn">SCISSOR</button>
+        </div>
 
         <div class="round-result"></div>
     </div>
