@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #051727;
+    color: #d6e2ec;
+
+
+}
+body,
+.interface,
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title{
+    font-family: 'Permanent Marker', cursive, sans-serif;
+    font-size: 3rem;
+}
+.subtitle{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.interface{
+    width: 50vw;
+
+}
+
+.result{
+    font-size: 2rem;
+}
+
+.scoreboard,
+.picks{
+    font-size: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.player-score,
+.player-choice{
+    color: #0ba145;
+    font-size: 32px;
+}
+.com-score,
+.com-choice{
+    color: #e42626e0;
+    font-size: 32px;
+}
+
+.round-result{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+button{
+    color: aliceblue;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 22px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+}
+#rock{
+    background-color: #09acac;
+}
+#paper{
+    background-color: #c4a20b;
+}
+#scissor{
+    background-color: #b00fc5;
+}
+.result > button{
+    background-color: #079129;
+}
