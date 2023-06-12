@@ -1,7 +1,15 @@
 const playerSelection = document.querySelectorAll('button');
+const result = document.querySelector('.result');
+const player = document.querySelector('.player-score');
+const com = document.querySelector('.com-score')
+
+const roundWinner = document.createElement('div');
+const gameWinner = document.createElement('div');
+result.appendChild(roundWinner);
+result.appendChild(gameWinner);
 
 function getComputerChoice(){
-    let choices = ["Rock", "Paper", "Scissor"];
+    let choices = ["rock", "paper", "scissor"];
     let pick = choices[Math.floor(Math.random()*choices.length)];
     return pick;
 }
@@ -38,55 +46,41 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
-/** 
-function playGame(){
+
+function playGame(playerPick){
+    let comPick = getComputerChoice();
+    let game = playRound(playerPick, comPick);
     let playerScore = 0;
     let comScore = 0;
-    for (let i = 0; i < 5; i++){
-        const playerPick = prompt("Rock, Paper, Scissor");
-        const comPick = getComputerChoice();
-        let game = playRound(playerPick, comPick);
-        console.log(`Round ${i+1}`);
-        if (game == "tie"){
-            console.log("It's a tie!");
-        }
-        else if (game == "player"){
-            console.log(`You win! ${playerPick} beats ${comPick}`);
-            playerScore += 1;
-        }
-        else if (game == "com"){
-            console.log(`You lose! ${comPick} beats ${playerPick}`)
-            comScore += 1;
-        }
-        else{
-            console.log("ERROR: Could not play game properly.")
-        }
+    if (game == "tie"){
+        roundWinner.textContent = "It's a tie!"
     }
-    scoreChecker(playerScore, comScore);
-}
-**/
-
-function scoreChecker(p, c){
-    //console.log(`Player: ${p} | Computer: ${c}`);
-    if (p == c){
-        console.log("The game is draw.")
+    else if (game == "win"){
+        roundWinner.textContent = `You win! ${playerPick} beats ${comPick}`;
+        playerScore += 1;
     }
-    else if (p > c){
-        console.log("Player won the game!")
+    else if (game == "lose"){
+        roundWinner.textContent = `You lose! ${comPick} beats ${playerPick}`;
+        comScore += 1;
     }
     else{
-        console.log("Computer won the game!")
+        roundWinner.textContent = "ERROR";
     }
 }
 
-//playGame();
+
+function displayGameWinner(p, c){
+    //console.log(`Player: ${p} | Computer: ${c}`);
+    if (p == 5){
+        result.textContent = "Player won the game!"
+    }
+    else if (c == 5){
+        result.textContent = "Computer won the game!"
+    }
+}
 
 playerSelection.forEach((pick) => {
     pick.addEventListener('click', () => {
-        console.log(pick.id);
-        //console.log(pick.value)
-        let game = playRound(pick.id, getComputerChoice());
-        console.log(game)
+        playGame(pick.id);
     });
-    
 });
