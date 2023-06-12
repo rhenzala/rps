@@ -9,22 +9,25 @@
 </head>
 <body>
     <h1>Rock Paper Scissor</h1>
-    <div class="scoreboard">
-        SCOREBOARD:
-        <div>Player: <span class="player-score"></span></div>
-        <div>Computer: <span class="com-score"></span></div>
+    <h3>First to score of 5 shall be the winner</h3>
+    <div class="interface">
+        <div class="scoreboard">
+            SCOREBOARD
+            <div>Player: <span class="player-score"></span></div>
+            <div>Computer: <span class="com-score"></span></div>
+        </div>
+        <div class="picks">
+            PICKS
+            <div>Player: <span class="player-choice"></span></div>
+            <div>Computer: <span class="com-choice"></span></div>
+        </div>
+
+        <button id="rock" class="btn">ROCK</button>
+        <button id="paper" class="btn">PAPER</button>
+        <button id="scissor" class="btn">SCISSOR</button>
+
+        <div class="round-result"></div>
     </div>
-    <div class="scoreboard">
-        PICKS:
-        <div>Player: <span class="player-choice"></span></div>
-        <div>Computer: <span class="com-choice"></span></div>
-    </div>
-
-
-    <button id="rock" class="btn">ROCK</button>
-    <button id="paper" class="btn">PAPER</button>
-    <button id="scissor" class="btn">SCISSOR</button>
-
     <div class="result"></div>
 </body>
 </html>
