@@ -22,39 +22,37 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-    let player = playerSelection.toLowerCase();
-    let computer = computerSelection.toLowerCase();
     displayPicks(playerSelection, computerSelection);
 
-    if (player == computer){
+    if (playerSelection === computerSelection){
         roundWinner.textContent = "It's a tie!"
     }
-    else if (player == "rock"){
-        if (computer == "paper"){
+    else if (playerSelection === "rock"){
+        if (computerSelection === "paper"){
             roundWinner.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
             comScore += 1;
         } 
-        else if (computer == "scissor"){
+        else if (computerSelection === "scissor"){
             roundWinner.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
             playerScore += 1;
         }
     }
-    else if (player == "paper"){
-        if (computer == "scissor"){
+    else if (playerSelection === "paper"){
+        if (computerSelection === "scissor"){
             roundWinner.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
             comScore += 1;
         } 
-        else if (computer == "rock"){
+        else if (computerSelection === "rock"){
             roundWinner.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
             playerScore += 1;
         }
     }
-    else if (player == "scissor"){
-        if (computer == "rock"){
+    else if (playerSelection === "scissor"){
+        if (computerSelection === "rock"){
             roundWinner.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
             comScore += 1;
         } 
-        else if (computer == "paper"){
+        else if (computerSelection === "paper"){
             roundWinner.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
             playerScore += 1;
         }
@@ -67,10 +65,13 @@ function displayScore(p, c){
 }
 
 function displayPicks(p, c){
+    p = p.toUpperCase();
+    c = c.toUpperCase();
     pChoice.textContent = `${p}`;
     comChoice.textContent = `${c}`;
 }
 
+// it clears the game interface so that the game will stop once the winner has been decided
 function displayGameWinner(p, c){
     if (p === 5){
         interface.textContent = "";
@@ -86,6 +87,7 @@ function displayGameWinner(p, c){
     }
 }
 
+// to play the game when the user clicks on any rps button
 playerSelection.forEach((pick) => {
     pick.addEventListener('click', () => {
         playRound(pick.id, getComputerChoice());
@@ -94,6 +96,7 @@ playerSelection.forEach((pick) => {
     });
 });
 
+// to refresh the page if the user wants to play again
 reset.addEventListener('click', () => {
     location.reload();
 })
