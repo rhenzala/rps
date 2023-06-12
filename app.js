@@ -1,12 +1,19 @@
+let playerScore = 0;
+let comScore = 0;
+
 const playerSelection = document.querySelectorAll('button');
-const result = document.querySelector('.result');
+const roundResult = document.querySelector('.round-result');
+const gameResult = document.querySelector('.result')
 const player = document.querySelector('.player-score');
 const com = document.querySelector('.com-score')
+const pChoice = document.querySelector('.player-choice');
+const comChoice = document.querySelector('.com-choice')
+const interface = document.querySelector('.interface');
 
 const roundWinner = document.createElement('div');
-const gameWinner = document.createElement('div');
-result.appendChild(roundWinner);
-result.appendChild(gameWinner);
+const reset = document.createElement('button');
+roundResult.appendChild(roundWinner);
+
 
 function getComputerChoice(){
     let choices = ["rock", "paper", "scissor"];
@@ -17,70 +24,76 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     let player = playerSelection.toLowerCase();
     let computer = computerSelection.toLowerCase();
+    displayPicks(playerSelection, computerSelection);
 
     if (player == computer){
-        return "tie";
+        roundWinner.textContent = "It's a tie!"
     }
     else if (player == "rock"){
         if (computer == "paper"){
-            return "lose";
+            roundWinner.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+            comScore += 1;
         } 
         else if (computer == "scissor"){
-            return "win"
+            roundWinner.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+            playerScore += 1;
         }
     }
     else if (player == "paper"){
         if (computer == "scissor"){
-            return "lose";
+            roundWinner.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+            comScore += 1;
         } 
         else if (computer == "rock"){
-            return "win"
+            roundWinner.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+            playerScore += 1;
         }
     }
     else if (player == "scissor"){
         if (computer == "rock"){
-            return "lose";
+            roundWinner.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+            comScore += 1;
         } 
         else if (computer == "paper"){
-            return "win"
+            roundWinner.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+            playerScore += 1;
         }
     }
 }
 
-function playGame(playerPick){
-    let comPick = getComputerChoice();
-    let game = playRound(playerPick, comPick);
-    let playerScore = 0;
-    let comScore = 0;
-    if (game == "tie"){
-        roundWinner.textContent = "It's a tie!"
-    }
-    else if (game == "win"){
-        roundWinner.textContent = `You win! ${playerPick} beats ${comPick}`;
-        playerScore += 1;
-    }
-    else if (game == "lose"){
-        roundWinner.textContent = `You lose! ${comPick} beats ${playerPick}`;
-        comScore += 1;
-    }
-    else{
-        roundWinner.textContent = "ERROR";
-    }
+function displayScore(p, c){
+    player.textContent = `${p}`;
+    com.textContent = `${c}`;
 }
 
+function displayPicks(p, c){
+    pChoice.textContent = `${p}`;
+    comChoice.textContent = `${c}`;
+}
 
 function displayGameWinner(p, c){
-    //console.log(`Player: ${p} | Computer: ${c}`);
-    if (p == 5){
-        result.textContent = "Player won the game!"
+    if (p === 5){
+        interface.textContent = "";
+        gameResult.textContent = `Player won the game! You scored: ${p} of 5`
+        reset.textContent = "RETRY"
+        gameResult.appendChild(reset);
     }
-    else if (c == 5){
-        result.textContent = "Computer won the game!"
+    else if (c === 5){
+        interface.textContent = "";
+        gameResult.textContent = `Computer won the game! The computer scored: ${c} of 5`
+        reset.textContent = "RETRY"
+        gameResult.appendChild(reset);
     }
 }
 
 playerSelection.forEach((pick) => {
     pick.addEventListener('click', () => {
-        playGame(pick.id);
+        playRound(pick.id, getComputerChoice());
+        displayScore(playerScore, comScore);
+        displayGameWinner(playerScore, comScore);
     });
 });
+
+reset.addEventListener('click', () => {
+    location.reload();
+})
