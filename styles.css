@@ -76,6 +76,11 @@ body,
     font-size: 1.5rem;
     font-weight: 700;
 }
+.selections{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
 button{
     color: aliceblue;
     font-family: inherit;
@@ -85,9 +90,12 @@ button{
     border: none;
     border-radius: 8px;
 }
+img{
+    width: 100px;
+    height: auto;
+}
 button:hover{
     cursor: pointer;
-    transition: 0.5s;
 }
 #rock{
     background-color: #09acac;
