@@ -75,13 +75,13 @@ function displayPicks(p, c){
 function displayGameWinner(p, c){
     if (p === 5){
         interface.textContent = "";
-        gameResult.textContent = `Player won the game! You scored: ${p} of 5`
+        gameResult.textContent = `You won the game! You scored: ${p} of 5`
         reset.textContent = "RETRY"
         gameResult.appendChild(reset);
     }
     else if (c === 5){
         interface.textContent = "";
-        gameResult.textContent = `Computer won the game! The computer scored: ${c} of 5`
+        gameResult.textContent = `You lose the game. The computer scored: ${c} of 5`
         reset.textContent = "RETRY"
         gameResult.appendChild(reset);
     }
